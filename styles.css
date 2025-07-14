@@ -1,0 +1,94 @@
+/* Estilos base para el cuerpo de la página */
+body {
+  margin: 0; /* Quita margen predeterminado */
+  font-family: Arial, sans-serif; /* Fuente de texto */
+  background: #9e8787; /* Fondo GRISITO */
+  color: #111; /* Color del texto */
+}
+
+/* Contenedor principal */
+.container {
+  display: flex; /* Coloca elementos en fila */
+  max-width: 1200px; /* Ancho máximo del contenedor */
+  margin: 50px auto; /* Centrado vertical con espacio arriba y abajo */
+  gap: 40px; /* Espacio entre galería y detalles */
+  padding: 0 20px; /* Espacio interno horizontal */
+}
+
+/* Galería */
+.gallery {
+  width: 50%; /* Ocupa la mitad del contenedor */
+}
+
+/* Imagen principal */
+.main-img {
+  width: 100%; /* Ocupa todo el ancho disponible */
+  max-height: 400px; /* Altura máxima */
+  object-fit: cover; /* Recorta la imagen sin deformarla */
+  border-radius: 10px; /* Bordes redondeados */
+  margin-bottom: 15px; /* Espacio abajo */
+}
+
+/* Miniaturas */
+.thumbnails {
+  display: flex; /* Las miniaturas en línea */
+  gap: 10px; /* Separación entre miniaturas */
+}
+
+.thumbnail {
+  width: 80px; /* Ancho fijo */
+  height: 80px; /* Altura fija */
+  object-fit: cover; /* Recorte proporcional */
+  border-radius: 8px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor tipo mano */
+  border: 2px solid #eee; /* Borde gris claro */
+  transition: all 0.3s ease; /* Transición suave */
+}
+
+.thumbnail:hover, .thumbnail.active {
+  transform: scale(1.1); /* Efecto agrandado */
+  border-color: orange; /* Borde naranja */
+}
+
+/* Detalles del producto */
+.details {
+  width: 50%; /* Ocupa la otra mitad */
+}
+
+.details h1 {
+  font-size: 28px; /* Tamaño grande para título */
+  margin-bottom: 10px; /* Espacio debajo */
+}
+
+.details p {
+  font-size: 16px; /* Tamaño del texto */
+  margin-bottom: 20px; /* Espacio inferior */
+}
+
+/* Estilos adicionales */
+.section {
+  margin-bottom: 30px; /* Espacio inferior entre secciones */
+}
+
+.highlight {
+  color: orange; /* Color naranja */
+  font-weight: bold; /* Texto en negrita */
+}
+
+/* CSS de las img */
+.div img {
+  filter: saturate(0%); /* Imagen en blanco y negro */
+  width: 10%; /* Ancho reducido al inicio */
+  border: 2px solid whitesmoke; /* Borde suave */
+  height: 100%; /* Altura completa del contenedor */
+  object-fit: cover; /* Recorte proporcional */
+  border-radius: 12px; /* Bordes redondeados */
+  transition: all ease 0.3s; /* Transición suave */
+  cursor: pointer; /* Cursor tipo mano */
+  align-content: center; /* Centrado vertical */
+}
+
+.div img:hover {
+  filter: saturate(100%); /* Colorea imagen al pasar el mouse */
+  width: 30%; /* Agranda la imagen */
+}

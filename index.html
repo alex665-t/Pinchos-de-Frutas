@@ -1,0 +1,261 @@
+<!DOCTYPE html> <!-- Define que el documento es HTML5 -->
+<html lang="es"> <!-- Indica que el idioma de la página es español -->
+<head>
+  <meta charset="UTF-8"> <!-- Codificación de caracteres en UTF-8 -->
+  <title>Pinchos de Frutas</title> <!-- Título que se muestra en la pestaña del navegador -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Hace que el sitio sea responsivo -->
+  <link rel="icon" type="image/png" href="imagen1.jpg"> <!-- Ícono de la pestaña -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet"> <!-- Fuente desde Google Fonts -->
+  <style>
+    /* Estilos generales de la página */
+    body {
+      margin: 0; /* Quita el margen por defecto */
+      font-family: 'Poppins', sans-serif; /* Aplica la fuente Poppins */
+      background: #fffbe6; /* Color de fondo claro y llamativo */
+      color: #333; /* Color del texto */
+    }
+
+    /* Contenedor principal */
+    .container {
+      display: flex; /* Elementos en fila */
+      flex-wrap: wrap; /* Permite que se ajusten en pantallas pequeñas */
+      max-width: 1200px; /* Ancho máximo */
+      margin: 50px auto; /* Centrado con margen superior e inferior */
+      padding: 20px; /* Espaciado interior */
+      gap: 40px; /* Separación entre elementos internos */
+      background: #fff; /* Fondo blanco para el contenedor */
+      border-radius: 15px; /* Bordes redondeados */
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    }
+
+    /* Imagen principal */
+    .main-img {
+      width: 100%; /* Ocupa todo el ancho disponible */
+      max-height: 400px; /* Altura máxima */
+      object-fit: cover; /* Mantiene proporción y recorta */
+      border-radius: 10px; /* Bordes redondeados */
+      margin-bottom: 15px; /* Espacio inferior */
+    }
+
+    /* Miniaturas */
+    .thumbnails {
+      display: flex; /* Las muestra en fila */
+      gap: 10px; /* Espacio entre ellas */
+      flex-wrap: wrap; /* Se ajustan en pantallas pequeñas */
+    }
+
+    .thumbnail {
+      width: 80px; /* Ancho fijo */
+      height: 80px; /* Altura fija */
+      object-fit: cover; /* Recorte proporcional */
+      border-radius: 8px; /* Bordes redondeados */
+      cursor: pointer; /* Cambia cursor al pasar encima */
+      border: 2px solid #ccc; /* Borde gris */
+      transition: all 0.3s ease; /* Transición suave al hacer hover */
+    }
+
+    .thumbnail:hover,
+    .thumbnail.active {
+      transform: scale(1.1); /* Agranda la miniatura */
+      border-color: orange; /* Borde naranja al seleccionar */
+    }
+
+    /* Detalles del producto */
+    .details {
+      flex: 1; /* Ocupa el resto del espacio */
+      min-width: 300px; /* Ancho mínimo */
+    }
+
+    .highlight {
+      color: orange; /* Texto resaltado en naranja */
+      font-weight: bold; /* Negrita */
+    }
+
+    h1, h2 {
+      margin: 10px 0; /* Margen vertical */
+      color: #c0392b; /* Título en rojo brillante */
+    }
+
+    p, li {
+      font-size: 16px; /* Tamaño de fuente estándar */
+      margin-bottom: 10px; /* Espacio inferior */
+    }
+
+    .section {
+      margin-top: 20px; /* Separación entre secciones */
+    }
+
+    /* Productos */
+    .div {
+      text-align: center; /* Centra el texto */
+      margin: 60px auto; /* Centrado con margen vertical */
+      max-width: 800px; /* Ancho máximo */
+    }
+
+    .div h3 {
+      color: #e67e22; /* Título naranja brillante */
+      font-size: 24px; /* Tamaño de fuente */
+    }
+
+    .productos {
+      display: flex; /* Fila de productos */
+      flex-wrap: wrap; /* Ajustables */
+      justify-content: center; /* Centrado horizontal */
+      gap: 30px; /* Separación */
+      margin-top: 20px; /* Espacio superior */
+    }
+
+    .producto {
+      width: 220px; /* Ancho fijo */
+      background: #ffeaa7; /* Fondo amarillo claro */
+      padding: 15px; /* Espaciado interno */
+      border-radius: 12px; /* Bordes redondeados */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+    }
+
+    .producto img {
+      width: 100%; /* Imagen al 100% del contenedor */
+      border-radius: 8px; /* Bordes redondeados */
+      margin-bottom: 10px; /* Espacio inferior */
+    }
+
+    .producto li {
+      text-align: left; /* Lista alineada a la izquierda */
+    }
+
+    /* Galería simple con botones */
+    .simple-gallery {
+      text-align: center; /* Centra contenido */
+      margin: 40px auto; /* Centrado con margen */
+    }
+
+    .simple-gallery img {
+      width: 100%; /* Imagen ocupa todo el contenedor */
+      max-width: 700px; /* Ancho máximo */
+      height: 400px;
+      object-fit: cover; /* Recorte proporcional */
+      border-radius: 15px; /* Bordes redondeados */
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2); /* Sombra */
+    }
+
+    .nav-btns {
+      margin-top: 10px; /* Espacio encima de botones */
+    }
+
+    .nav-btns button {
+      background-color: #d63031; /* Rojo brillante */
+      color: #fff; /* Texto blanco */
+      border: none; /* Sin borde */
+      padding: 10px 15px; /* Relleno */
+      margin: 0 10px; /* Espacio entre botones */
+      border-radius: 8px; /* Bordes redondeados */
+      font-size: 18px; /* Tamaño fuente */
+      cursor: pointer; /* Cursor tipo mano */
+    }
+
+    .nav-btns button:hover {
+      background-color: #c0392b; /* Más oscuro al pasar el mouse */
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Contenedor general con imagen principal y miniaturas -->
+  <div class="container">
+    <div class="gallery">
+      <img id="mainImage" class="main-img" src="imagen1.jpg" alt="Pinchos de Frutas">
+      <div class="thumbnails">
+        <img class="thumbnail" src="imagen1.jpg" alt="Mini 1" onclick="cambiarImagen(this)">
+        <img class="thumbnail" src="imagen2.jpg" alt="Mini 2" onclick="cambiarImagen(this)">
+        <img class="thumbnail" src="imagen3.jpg" alt="Mini 3" onclick="cambiarImagen(this)">
+        <img class="thumbnail" src="imagen4.jpg" alt="Mini 4" onclick="cambiarImagen(this)">
+      </div>
+    </div>
+    <div class="details">
+      <span class="highlight">Producto Saludable</span>
+      <h1>Pinchos de Frutas</h1>
+      <p>🌟 Bienvenidos a Pinchos de Frutas, una propuesta deliciosa y natural para ti.</p>
+      <div class="section">
+        <h2>Misión</h2>
+        <p>Ofrecer pinchos con frutas deliciosas y saludables.</p>
+      </div>
+      <div class="section">
+        <h2>Visión</h2>
+        <p>Ser reconocidos por la calidad y frescura de nuestros productos.</p>
+      </div>
+      <div class="section">
+        <h2>Objetivos</h2>
+        <p><strong>General:</strong> Ser reconocidos como la mejor opción saludable.</p>
+        <p><strong>Específico:</strong> Diseñar un producto sabroso y nutritivo.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección de productos -->
+  <div class="div">
+    <h3>¿Qué productos te ofrecemos?</h3>
+    <div class="productos">
+      <div class="producto">
+        <img src="img1.png" alt="Dulce">
+        <strong>Dulce $0.80</strong>
+        <ul>
+          <li>Manzana</li>
+          <li>Guineo</li>
+          <li>Malvavisco</li>
+          <li>Gomitas</li>
+        </ul>
+      </div>
+      <div class="producto">
+        <img src="img2.png" alt="Picante">
+        <strong>Picante $0.80</strong>
+        <ul>
+          <li>Piña</li>
+          <li>Sandía</li>
+          <li>Gomitas picantes</li>
+          <li>Chamoy</li>
+          <li>Tajín</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Galería con navegación simple -->
+  <div class="simple-gallery">
+    <img id="galleryImage" src="imagen1.jpg" alt="Galería">
+    <div class="nav-btns">
+      <button onclick="anteriorImagen()">❮ Anterior</button>
+      <button onclick="siguienteImagen()">Siguiente ❯</button>
+    </div>
+  </div>
+
+  <script>
+    // Cambia la imagen principal al hacer clic en una miniatura
+    function cambiarImagen(miniatura) {
+      const imagenPrincipal = document.getElementById('mainImage');
+      imagenPrincipal.src = miniatura.src;
+      imagenPrincipal.alt = miniatura.alt;
+      document.querySelectorAll('.thumbnail').forEach(img => img.classList.remove('active'));
+      miniatura.classList.add('active');
+    }
+
+    // Galería 2
+    const imagenes = ["imagen1.jpg", "imagen4.jpg", "img2.png", "imagen3.jpg", "img1.png", "imagen2.jpg"];
+    let indiceActual = 0;
+
+    function actualizarGaleria() {
+      const img = document.getElementById("galleryImage");
+      img.src = imagenes[indiceActual];
+    }
+
+    function siguienteImagen() {
+      indiceActual = (indiceActual + 1) % imagenes.length;
+      actualizarGaleria();
+    }
+
+    function anteriorImagen() {
+      indiceActual = (indiceActual - 1 + imagenes.length) % imagenes.length;
+      actualizarGaleria();
+    }
+  </script>
+</body>
+</html>
